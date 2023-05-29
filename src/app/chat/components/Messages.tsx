@@ -10,13 +10,13 @@ const AlwaysScrollToBottom = () => {
 };
 
 type Props = {
-  messages: { from: string; text: string }[];
+  messages: { role: string; content: string }[];
 };
 export const Messages: FC<Props> = ({ messages }) => {
   return (
     <Flex w="100%" h="80%" overflowY="scroll" flexDirection="column" p="3">
       {messages.map((item, index) => {
-        if (item.from === "me") {
+        if (item.role === "user") {
           return (
             <Flex key={index} w="100%" justify="flex-end">
               <Flex
@@ -27,7 +27,7 @@ export const Messages: FC<Props> = ({ messages }) => {
                 my="1"
                 p="3"
               >
-                <Text>{item.text}</Text>
+                <Text>{item.content}</Text>
               </Flex>
             </Flex>
           );
@@ -47,7 +47,7 @@ export const Messages: FC<Props> = ({ messages }) => {
                 my="1"
                 p="3"
               >
-                <Text>{item.text}</Text>
+                <Text>{item.content}</Text>
               </Flex>
             </Flex>
           );
